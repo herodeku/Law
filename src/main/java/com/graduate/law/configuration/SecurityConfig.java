@@ -18,11 +18,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().ignoringAntMatchers("/druid/*");
-   //    http.authorizeRequests().antMatchers("/").permitAll();
-  //             .antMatchers("/level1/**").hasRole("VIP1");
-//       http.formLogin();
-//       http.logout();
-//       http.rememberMe();
+        //    http.authorizeRequests().antMatchers("/").permitAll();
+        //             .antMatchers("/level1/**").hasRole("VIP1");
+        http.formLogin().loginPage("");//默认来到/login页面action="/login",如果loginpage改变了，则和loginpage一致
+        http.logout().logoutSuccessUrl("");//action="/logout"
+        http.rememberMe();
     }
 
 //    @Override
