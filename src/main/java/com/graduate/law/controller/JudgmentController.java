@@ -42,7 +42,8 @@ public class JudgmentController {
             @ApiParam(name = "message", value = "查询内容", required = true)@PathVariable String message,
             @ApiParam(name = "page", value = "第page页（从0开始）", required = true)@PathVariable Integer page,
             @ApiParam(name = "size", value = "每页size条数据", required = true)@PathVariable Integer size ){
-        return judgmentService.simpleSearch(message,PageRequest.of(page,size));
+        PageRequest pageRequest = new PageRequest(page, size);
+        return judgmentService.simpleSearch(message,pageRequest);
     }
 
     @ApiOperation(value = "获取所有文书")

@@ -69,6 +69,8 @@ public class JudgmentServiceImpl implements JudgmentService {
     @Override
     public void saveCivil() {
         List<Judgment> judementCivilCases = LoadSource.loadToCivil("C:\\Users\\win\\Desktop\\civil.txt");
-        judgmentRepository.saveAll(judementCivilCases);
+        for (Judgment judgment:judementCivilCases) {
+            judgmentRepository.save(judgment);
+        }
     }
 }

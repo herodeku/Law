@@ -24,3 +24,5 @@ spring:
     removeAbandoned: true
     removeAbandonedTimeout: 1800
     logAbandoned: true
+  redis:
+    host: 59.110.243.130
