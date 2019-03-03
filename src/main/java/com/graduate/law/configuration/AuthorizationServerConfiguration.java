@@ -28,18 +28,18 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     @Autowired
     private DataSource dataSource;
 
-    @Bean // 声明TokenStore实现
-    public TokenStore tokenStore() {
-        return new JdbcTokenStore(dataSource);
-    }
+//    @Bean // 声明TokenStore实现
+//    public TokenStore tokenStore() {
+//        return new JdbcTokenStore(dataSource);
+//    }
 
     @Bean // 声明 ClientDetails实现
     public ClientDetailsService clientDetails() {
         return new JdbcClientDetailsService(dataSource);
     }
 
-    @Autowired
-    private TokenStore tokenStore;
+//    @Autowired
+//    private TokenStore tokenStore;
 
     @Autowired
     private AuthenticationManager authenticationManager;

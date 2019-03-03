@@ -4,6 +4,7 @@ import com.graduate.law.bean.Judgment;
 import com.graduate.law.repository.JudgmentRepository;
 import com.graduate.law.service.JudgmentService;
 import com.graduate.law.util.LoadSource;
+import com.graduate.law.util.ResultUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -38,18 +39,18 @@ public class JudgmentController {
 
     @ApiOperation(value = "简单查询")
     @GetMapping("/simpleSearch/{message}/{page}/{size}")
-    public List<Judgment> simpleSearch(
+    public ResultUtil simpleSearch(
             @ApiParam(name = "message", value = "查询内容", required = true)@PathVariable String message,
             @ApiParam(name = "page", value = "第page页（从0开始）", required = true)@PathVariable Integer page,
             @ApiParam(name = "size", value = "每页size条数据", required = true)@PathVariable Integer size ){
         PageRequest pageRequest = new PageRequest(page, size);
-        return judgmentService.simpleSearch(message,pageRequest);
+        return ResultUtil.success(judgmentService.simpleSearch(message,pageRequest));
     }
 
     @ApiOperation(value = "获取所有文书")
     @GetMapping("getAllJudgment")
-    public List<Judgment> getAllJudgment(){
-        return judgmentService.getAllJudgment();
+    public ResultUtil getAllJudgment(){
+        return ResultUtil.success(judgmentService.getAllJudgment());
     }
 
     @GetMapping("deleteAllJudgment")
