@@ -2,6 +2,8 @@ package com.graduate.law;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.graduate.law.util.LawException;
+import com.graduate.law.util.ResultCode;
 import org.apache.ibatis.logging.stdout.StdOutImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,16 +32,19 @@ public class LawApplicationTests {
 
     @Test
     public void blob(){
-       //redisTemplate.boundValueOps("name").set("xiaoming");
-        //System.out.println(redisTemplate.opsForValue().get("name"));
-//        RedisTokenStore redisTokenStore = new RedisTokenStore(redisConnectionFactory);
-//        OAuth2AccessToken oAuth2AccessToken = redisTokenStore.readAccessToken("28e24778-c97c-41cb-aba5-60bc4af21edb");
-//        OAuth2Authentication oAuth2Authentication = redisTokenStore.readAuthentication(oAuth2AccessToken);
-//        Authentication userAuthentication = oAuth2Authentication.getUserAuthentication();
-//        Object details = userAuthentication.getDetails();
-//        JSONObject jsonObject = JSONObject.parseObject(JSONObject.toJSONString(details));
-//        String username = (String) jsonObject.get("username");
-//        System.out.println(username);
+        RedisTokenStore redisTokenStore = new RedisTokenStore(redisConnectionFactory);
+        OAuth2AccessToken oAuth2AccessToken = redisTokenStore.readAccessToken("c01f419a-2436-482e-a749-607e5da64aab");
+        OAuth2Authentication oAuth2Authentication = redisTokenStore.readAuthentication(oAuth2AccessToken);
+        Authentication userAuthentication = oAuth2Authentication.getUserAuthentication();
+        Object details = userAuthentication.getDetails();
+        System.out.println(details);
+        JSONObject jsonObject = JSONObject.parseObject(JSONObject.toJSONString(details));
+        String username = (String) jsonObject.get("username");
+        System.out.println(username);
+    }
+    @Test
+    public void construct(){
+        new LawException(ResultCode.SCUUESS);
     }
 }
 
